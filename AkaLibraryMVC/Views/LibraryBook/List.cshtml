@@ -1,0 +1,42 @@
+﻿@model  System.Collections.Generic.IEnumerable<AkaLibraryMVC.Models.Library_Book>
+
+@{
+    ViewBag.Title = "List of Books for Library";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Books in @Html.ViewBag.LibraryName</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.BookTitle.Title)
+        </th>
+        <th>
+            Total Purchased By Library
+        </th>
+        <th>
+            Available
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.BookTitle.Title)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TotalPurchasedByLibrary)
+        </td>
+        <td>
+            --
+        </td>
+        <td>
+            @Html.ActionLink("Details", "Details", new {id = item.LibraryBookSId})
+        </td>
+        
+    </tr>
+}
+
+</table>
